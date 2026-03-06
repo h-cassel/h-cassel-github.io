@@ -5,17 +5,131 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Heather Cassel's Research</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
 
   <body>
-    <!-- Header / Navigation Secion -->
-    <header>
-      <h1 class="title" style="text-align: center">My Research</h1>
-      <nav style="text-align: center">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Me</a>
-        <a href="projects.html">My Projects</a>
-      </nav>
-    </header>
+    <!-- Header / Navigation Section -->
+    <div id="header-placeholder"></div>
+
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+
+          const hamburger = document.getElementById("hamburger");
+          const navMenu = document.getElementById("navMenu");
+
+          hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+          });
+        });
+    </script>
+
+    <!-- Research Content -->
+    <section class="research-container">
+      <h1 class="page-title">Academic Research</h1>
+
+      <article class="research-card">
+        <div class="research-image">
+          <img
+            src="media/movie-research.png"
+            alt="Box Office Success Visualization"
+          />
+        </div>
+        <div class="research-info">
+          <h2 class="paper-title">
+            Understanding Immediate Weekend Hits and Cult Classics Using Natural
+            Language Processing Script Analysis
+          </h2>
+          <p class="authors">
+            <strong>Authors:</strong> Heather Cassel, Ann Pham, Hung Nguyen,
+            Linh B. Ngo
+          </p>
+          <p class="journal">
+            <strong>Published in:</strong> Journal of Computing Sciences in
+            Colleges
+          </p>
+
+          <a
+            href="https://dl.acm.org/doi/abs/10.5555/3722479.3722510"
+            class="read-btn"
+            >Read Paper</a
+          >
+        </div>
+      </article>
+
+      <article class="research-card">
+        <div class="research-image">
+          <img
+            src="media/LLM-competitive-programming.png"
+            alt="Local LLM Programming Visualization"
+          />
+        </div>
+        <div class="research-info">
+          <h2 class="paper-title">
+            Evaluating the Limitations of Local LLMs in Solving Complex
+            Programming Challenges
+          </h2>
+          <p class="authors">
+            <strong>Authors:</strong> Kaden Matotek, Heather Cassel, Md
+            Amiruzzimaa, Linh B. Ngo
+          </p>
+          <p class="journal"><strong>Published in:</strong> CCSCE Journal</p>
+
+          <div class="awards">
+            <i class="fas fa-award"></i> Best Faculty Paper, Research - CCSC
+            Eastern 2025
+          </div>
+
+          <a href="https://arxiv.org/abs/2509.15283" class="read-btn"
+            >Read Paper</a
+          >
+        </div>
+      </article>
+
+      <article class="research-card">
+        <div class="research-image">
+          <img
+            src="media/drag-research.jpg"
+            alt="Future Research Teaser Image"
+          />
+        </div>
+        <div class="research-info">
+          <h2 class="paper-title">Coming Soon...</h2>
+        </div>
+      </article>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      function loadComponent(id, file) {
+        fetch(file)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById(id).innerHTML = data;
+
+            if (id === "header-placeholder") {
+              initMobileMenu();
+            }
+          });
+      }
+
+      function initMobileMenu() {
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("navMenu");
+        if (hamburger && navMenu) {
+          hamburger.onclick = () => navMenu.classList.toggle("active");
+        }
+      }
+
+      loadComponent("footer-placeholder", "footer.html");
+    </script>
   </body>
 </html>

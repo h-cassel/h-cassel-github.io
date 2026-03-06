@@ -5,17 +5,164 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>About Heather Cassel</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
 
   <body>
-    <!-- Header / Navigation Secion -->
-    <header>
-      <h1 class="title" style="text-align: center">About Me</h1>
-      <nav style="text-align: center">
-        <a href="index.html">Home</a>
-        <a href="projects.html">My Projects</a>
-        <a href="research.html">My Research</a>
-      </nav>
-    </header>
+    <!-- Header / Navigation Section -->
+    <div id="header-placeholder"></div>
+
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+
+          const hamburger = document.getElementById("hamburger");
+          const navMenu = document.getElementById("navMenu");
+
+          hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+          });
+        });
+    </script>
+
+    <!-- About Page Content -->
+    <section class="about-container">
+      <div class="intro-flex">
+        <div class="intro-image">
+          <img src="media/portfolio-image.jpg" alt="Heather Cassel Portrait" />
+        </div>
+        <div class="intro-text">
+          <h1 class="page-title">The Computational Anthropologist</h1>
+          <p>
+            My name is Heather Cassel, I am a
+            <strong>Computer Science</strong> and
+            <strong>Anthropology</strong> student at West Chester University. My
+            passions lie at the intersection of human culture and computational
+            power.
+          </p>
+          <p>
+            When I am not at work or in the research lab, I can be found
+            researching historical deaths for my new podcast or enjoying the
+            beauty of nature as I fly fish my local streams.
+          </p>
+        </div>
+      </div>
+
+      <hr class="goth-divider" />
+
+      <div class="academic-grid">
+        <div class="academic-stats">
+          <h2 class="section-heading">Academics</h2>
+          <p><strong>Estimated Graduation:</strong> Fall 2027</p>
+          <p><strong>Current GPA:</strong> 3.752</p>
+          <p>
+            <strong>Honors:</strong> Upsilon Pi Epsilon (International CS Honor
+            Society), Dean's List (3 Semesters)
+          </p>
+
+          <h3 class="sub-heading">Key Coursework</h3>
+          <p><strong>Computer Science</strong></p>
+          <ul class="course-list">
+            <li>Android App Development</li>
+            <li>Artificial Intelligence</li>
+            <li>Computer Security & Ethics</li>
+            <li>Data Structures & Algorithms</li>
+          </ul>
+
+          <p><strong>Anthropology</strong></p>
+          <ul class="course-list">
+            <li>Foresnic Anthropology</li>
+            <li>Intro to Archaeology</li>
+            <li>Intro to Biological Anthropology</li>
+            <li>Intro to Cultural Anthropology</li>
+          </ul>
+        </div>
+
+        <div class="activities">
+          <h2 class="section-heading">Affiliations</h2>
+          <div class="activity-card">
+            <h3>AIR Lab Member</h3>
+            <p>
+              Actively contributing to AI and search algorithm research at West
+              Chester University.
+            </p>
+            <a href="https://wcu-air.github.io/airlab/" class="read-btn"
+              >Check Out the Lab</a
+            >
+          </div>
+          <div class="activity-card">
+            <h3>UPE Member</h3>
+            <p>
+              Inducted March 2025 into the only international honor society for
+              the computing and information disciplines.
+            </p>
+          </div>
+          <div class="activity-card">
+            <h3>Vice President - Competitive Programming Club</h3>
+            <p>
+              Vice President for West Chester University's Competitive
+              Programming Club, and active participant in competitions such as
+              ICPC, PACISE, and CCSCE.
+            </p>
+          </div>
+          <div class="activity-card">
+            <h3>President - WCU Mythos Society</h3>
+            <p>
+              President and Founder fo the West Chester University Mythos
+              Society, providing a fun and educational environment to learn
+              about ancient cultures across the world.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="experience-section">
+        <h2 class="section-heading">Professional Experience</h2>
+        <div class="job-card">
+          <div class="job-header">
+            <h3>Software Development Intern</h3>
+            <span>2024 - Present</span>
+          </div>
+          <h4>4V Services LLC</h4>
+          <p>
+            For the past two years, I have spearheaded design overhauls and
+            contributed to enterprise-level search applications, bridging the
+            gap between client needs and technical execution.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      function loadComponent(id, file) {
+        fetch(file)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById(id).innerHTML = data;
+
+            if (id === "header-placeholder") {
+              initMobileMenu();
+            }
+          });
+      }
+
+      function initMobileMenu() {
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("navMenu");
+        if (hamburger && navMenu) {
+          hamburger.onclick = () => navMenu.classList.toggle("active");
+        }
+      }
+
+      loadComponent("footer-placeholder", "footer.html");
+    </script>
   </body>
 </html>

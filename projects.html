@@ -5,17 +5,125 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Heather Cassel's Projects</title>
     <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
   </head>
 
   <body>
-    <!-- Header / Navigation Secion -->
-    <header>
-      <h1 class="title" style="text-align: center">My Projects</h1>
-      <nav style="text-align: center">
-        <a href="index.html">Home</a>
-        <a href="about.html">About Me</a>
-        <a href="research.html">My Research</a>
-      </nav>
-    </header>
+    <!-- Header / Navigation Section -->
+    <div id="header-placeholder"></div>
+
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+
+          const hamburger = document.getElementById("hamburger");
+          const navMenu = document.getElementById("navMenu");
+
+          hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+          });
+        });
+    </script>
+
+    <!-- Projects Page Content -->
+    <section class="projects-container">
+      <h1 class="page-title">Project Portfolio</h1>
+
+      <div class="projects-grid">
+        <article class="project-card">
+          <div class="project-media">
+            <img
+              src="media/4vservices-screenshot.png"
+              alt="4V Services Website Design"
+            />
+            <div class="project-type">Website</div>
+          </div>
+          <div class="project-content">
+            <h2 class="project-title">4V Services LLC. Website</h2>
+            <p class="project-description">
+              Major design overhaul and front-end implementation for an
+              enterprise service and fractional CTO provider.
+            </p>
+            <div class="project-links">
+              <a href="https://4vservices.com" target="_blank" class="view-btn"
+                >Visit Site <i class="fas fa-external-link-alt"></i
+              ></a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media">
+            <img
+              src="media/autoquest-screenshots.jpg"
+              alt="AutoQuest Application Design"
+            />
+            <div class="project-type">Android Application</div>
+          </div>
+          <div class="project-content">
+            <h2 class="project-title">AutoQuest</h2>
+            <p class="project-description">
+              An independent car sighting application currently in development,
+              with custom U.S.-based automotive database.
+            </p>
+            <div class="project-links">
+              <a href="" target="_blank" class="view-btn">In Development</a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card">
+          <div class="project-media">
+            <img
+              src="media/antrix-screenshots.jpg"
+              alt="Antrix Application Design"
+            />
+            <div class="project-type">Flask Application</div>
+          </div>
+          <div class="project-content">
+            <h2 class="project-title">Antrix</h2>
+            <p class="project-description">
+              A robust application built with Flask, focusing on foresnic
+              anthropology data processing and algorithmic determinations.
+            </p>
+            <div class="project-links">
+              <a href="" target="_blank" class="view-btn">In Development</a>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      function loadComponent(id, file) {
+        fetch(file)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById(id).innerHTML = data;
+
+            if (id === "header-placeholder") {
+              initMobileMenu();
+            }
+          });
+      }
+
+      function initMobileMenu() {
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("navMenu");
+        if (hamburger && navMenu) {
+          hamburger.onclick = () => navMenu.classList.toggle("active");
+        }
+      }
+
+      loadComponent("footer-placeholder", "footer.html");
+    </script>
   </body>
 </html>

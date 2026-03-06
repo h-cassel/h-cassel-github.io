@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Heather Cassel's Research</title>
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+
+  <body>
+    <!-- Header / Navigation Section -->
+    <div id="header-placeholder"></div>
+
+    <script>
+      fetch("header.html")
+        .then((response) => response.text())
+        .then((data) => {
+          document.getElementById("header-placeholder").innerHTML = data;
+
+          const hamburger = document.getElementById("hamburger");
+          const navMenu = document.getElementById("navMenu");
+
+          hamburger.addEventListener("click", () => {
+            navMenu.classList.toggle("active");
+          });
+        });
+    </script>
+
+    <!-- Contact Page Content -->
+    <section class="contact-container">
+      <h1 class="page-title">Get In Touch</h1>
+
+      <div class="contact-wrapper">
+        <div class="contact-info">
+          <p class="contact-intro">
+            Whether it's about a <strong>web development</strong> project,
+            <strong>anthropological</strong> or
+            <strong>computational research</strong>, or any other project you
+            have in mind - my inbox is open.
+          </p>
+
+          <div class="info-item">
+            <i class="fas fa-envelope-open-text"></i>
+            <div>
+              <span class="label">Professional Email</span>
+              <a href="mailto:heatherccassel@gmail.com"
+                >heatherccassel@gmail.com</a
+              >
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fas fa-university"></i>
+            <div>
+              <span class="label">University Email</span>
+              <a href="mailto:hc946859@wcupa.edu">hc946859@wcupa.edu</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <i class="fab fa-linkedin-in"></i>
+            <div>
+              <span class="label">LinkedIn</span>
+              <a
+                href="https://www.linkedin.com/in/heather-cassel-193298296"
+                target="_blank"
+                >Connect With Me</a
+              >
+            </div>
+          </div>
+        </div>
+
+        <form class="contact-form">
+          <div class="form-group">
+            <input type="text" placeholder="Your Name" required />
+          </div>
+          <div class="form-group">
+            <input type="email" placeholder="Your Email" required />
+          </div>
+          <div class="form-group">
+            <textarea placeholder="Your Message" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="submit-btn">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-placeholder"></div>
+
+    <script>
+      function loadComponent(id, file) {
+        fetch(file)
+          .then((response) => response.text())
+          .then((data) => {
+            document.getElementById(id).innerHTML = data;
+
+            if (id === "header-placeholder") {
+              initMobileMenu();
+            }
+          });
+      }
+
+      function initMobileMenu() {
+        const hamburger = document.getElementById("hamburger");
+        const navMenu = document.getElementById("navMenu");
+        if (hamburger && navMenu) {
+          hamburger.onclick = () => navMenu.classList.toggle("active");
+        }
+      }
+
+      loadComponent("footer-placeholder", "footer.html");
+    </script>
+  </body>
+</html>
